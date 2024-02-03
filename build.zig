@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn build(b: *std.build.Builder) void {
+pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
@@ -11,7 +11,7 @@ pub fn build(b: *std.build.Builder) void {
         .optimize = optimize,
     });
     opencl.installHeadersDirectoryOptions(.{
-        .source_dir = "CL",
+        .source_dir = .{ .path = "CL" },
         .install_dir = .header,
         .install_subdir = "CL",
     });
